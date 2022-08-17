@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTOVERSION_TOKEN }}
           EMAIL: github-actions[bot]@users.noreply.github.com
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_COMMITTER_NAME: github-actions[bot]
