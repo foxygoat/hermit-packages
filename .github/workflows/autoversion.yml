@@ -1,14 +1,11 @@
 on:
-  schedule:
-    - cron: "30 2 * * *"
+  # schedule:
+  #   - cron: "30 2 * * *"
   workflow_dispatch:
 jobs:
   auto-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: de-vri-es/setup-git-credentials@v2
-        with:
-          credentials: ${{secrets.AUTOVERSION_TOKEN}}
       - uses: actions/checkout@v2
       - env:
           GITHUB_TOKEN: ${{ secrets.AUTOVERSION_TOKEN }}
