@@ -17,9 +17,9 @@ test: ## changed manifests are tested with hermit test
 
 # --- Autoversion  -------------------------------------------------------------
 autoversion: ## update manifests that use auto-version to latest available versions
-	[[ -z "$$(git status --porcelain)" ]] || { echo "dirty workspace aborting"; exit 1; }
+	test -z "$$(git status --porcelain)" || { echo "dirty workspace aborting"; exit 1; }
 	hermit -d manifest auto-version *.hcl
-	[[ -n "$$(git status --porcelain)" ]] || { echo "No change"; exit 0; }
+	test -n "$$(git status --porcelain)" || { echo "No change"; exit 0; }
 	git commit -am "Auto-versioned: $$(git diff --name-only | paste -s -d ' ' -)"
 	$(if $(CI), git push)
 
